@@ -133,7 +133,7 @@ public class LandingController {
 		
 		Journey j2 = new Journey();
 		j2.setName("running");
-		j2.setImage_url("running.jpg");
+		j2.setImage_url("runninng.jpg");
 		jRepo.save(j);
 		jRepo.save(j2);
 	}
