@@ -126,13 +126,16 @@ public class LandingController {
 	}
 	
 	@PostConstruct
-	public void dummy() {		
+	public void dummy() throws ParseException {		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Journey j = new Journey();
 		j.setName("climbing");
 		j.setImage_url("climbing.jpg");
+		j.setDate(format.parse("2017-9-30"));
 		
 		Journey j2 = new Journey();
 		j2.setName("running");
+		j2.setDate(format.parse("2017-9-30"));
 		j2.setImage_url("runninng.jpg");
 		jRepo.save(j);
 		jRepo.save(j2);
