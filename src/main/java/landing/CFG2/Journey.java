@@ -21,7 +21,7 @@ public class Journey   {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID")
-	private Long ID;
+	private Long Id;
 
 	public Date getDate() {
 		return date;
@@ -39,12 +39,12 @@ public class Journey   {
 		this.name = name;
 	}
 
-	public Long getID() {
-		return ID;
+	public Long getId() {
+		return Id;
 	}
 
 	public void setID(Long iD) {
-		ID = iD;
+		Id = iD;
 	}
 	
 //	public String toString() {

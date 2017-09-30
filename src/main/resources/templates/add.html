@@ -1,16 +1,21 @@
 ﻿<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<<<<<<< HEAD:add.html
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 
     <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
-=======
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
->>>>>>> f2bef3b7e520a58135f125dc0ddc46e255dd3b3b:src/main/resources/templates/add.html
-    <title>Home</title>
+    <link href="css/style.css" rel="stylesheet"/>
+
 </head>
 <body>
     <div id="wrapper">
@@ -18,18 +23,18 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="index.html">
+                    <a href="/">
                         Embarc Journey Media
                     </a>
                 </li>
                 <li>
-                    <a href="feed.html">My Feed</a>
+                    <a href="/feed">My Feed</a>
                 </li>
                 <li>
-                    <a href="add.html">Add a Journey!</a>
+                    <a href="/add">Add a Journey!</a>
                 </li>
                 <li>
-                    <a href="index.html">Logout</a>
+                    <a href="/">Logout</a>
                 </li>
             </ul>
         </div>
@@ -39,14 +44,13 @@
             <div class="container-fluid">
                 <h1>Add Your Journey!</h1>
                 <p>Select your journey, put in the date you went, put your reaction, and talk about the trip itself.</p>
-                <form action="">
+                <form action="/addJourney" method="POST">
                     Journey: <select name="journey">
-                        <option value="j1">Brooklyn Boulders</option>
-                        <option value="j2">Welding Day</option>
-                        <option value="j3">Loyola Tour</option>
+                        
+                        <option th:each="journey : ${journeys}" th:text= "${journey.getName()}" th:value = "${journey.getId()}"/>
                     </select>
                     <br />
-                    Date: <input type="text" name="date" value="date" />
+                    Date: <input type="Date" name="date" />
                     <br />
                     Reaction: <select name="react">
                         <option value="happy">:]</option>
@@ -54,9 +58,9 @@
                         <option value="meh">:\</option>
                         <option value="sad">:[</option>
                     </select>
-                    <br />
+                    <br />Put your reflection here!
                     <textarea name="reflect" rows="5" cols="50"></textarea>
-                    <input type="submit" name="reflection" value="reflection" /> Put your reflection here!
+                    <input type="submit" name="Submit"  /> 
                 </form>
             </div>
         </div>
