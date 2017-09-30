@@ -1,37 +1,64 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
     <title>Home</title>
 </head>
 <body>
-    <header>
-        <div class="navbar">
-            <ul>
-                <li><a href="index.html">Embarc Journey Tool</a></li>
-                <li><a href="feed.html">My Feed</a></li>
-                <li><a href="add.html">Add a Journey!</a></li>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="index.html">
+                        Embarc Journey Media
+                    </a>
+                </li>
+                <li>
+                    <a href="feed.html">My Feed</a>
+                </li>
+                <li>
+                    <a href="add.html">Add a Journey!</a>
+                </li>
+                <li>
+                    <a href="index.html">Logout</a>
+                </li>
             </ul>
         </div>
-    </header>
-    <div class="add_form">
-        <form action="">
-            <select name="journey">
-                <option value="j1">Brooklyn Boulders</option>
-                <option value="j2">Welding Day</option>
-                <option value="j3">Loyola Tour</option>
-            </select>
-            <br />
-            <select name="react">
-                <option value="happy">:]</option>
-                <option value="ecstatic">XD</option>
-                <option value="meh">:\</option>
-                <option value="sad">:[</option>
-            </select>
-            <textarea name="reflect" rows="5" cols="50"></textarea>
-            <input type="submit" name="reflection" value="reflection" />
-        </form>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <h1>Add Your Journey!</h1>
+                <p>Select your journey, put in the date you went, put your reaction, and talk about the trip itself.</p>
+                <form action="">
+                    Journey: <select name="journey">
+                        <option value="j1">Brooklyn Boulders</option>
+                        <option value="j2">Welding Day</option>
+                        <option value="j3">Loyola Tour</option>
+                    </select>
+                    <br />
+                    Date: <input type="text" name="date" value="date" />
+                    <br />
+                    Reaction: <select name="react">
+                        <option value="happy">:]</option>
+                        <option value="ecstatic">XD</option>
+                        <option value="meh">:\</option>
+                        <option value="sad">:[</option>
+                    </select>
+                    <br />
+                    <textarea name="reflect" rows="5" cols="50"></textarea>
+                    <input type="submit" name="reflection" value="reflection" /> Put your reflection here!
+                </form>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
     </div>
+
 
 </body>
 </html>
