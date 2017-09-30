@@ -37,18 +37,19 @@ public class LandingController {
 	}
 	
 	@PostMapping("/addJourney")
-	public String post(@RequestParam("journey")Long journey,@RequestParam("date")String date) throws ParseException {
+	public String post(@RequestParam("journey")Long journey,@RequestParam("date")String date, 
+			@RequestParam("reflect")String reflection, 
+			@RequestParam("react")String emoji) throws ParseException {
 		MyJourney m = new MyJourney();
-System.out.println(date);
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-System.out.println(df);
 		m.setDate(df.parse(date));
 		Journey j =jRepo.findOne(journey);
 		m.setJourney(j);
+		m.setReflection(reflection);
+		m.setReaction(emoji);
 		m.setName(j.getName());
 		m.setUser(u);
 		mRepo.save(m);
-System.out.print(m.getDate());
 		return "redirect:/";
 	}
 	

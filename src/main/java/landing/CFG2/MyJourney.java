@@ -19,11 +19,30 @@ public class MyJourney   {
 	private Date date;
 	@Column(name = "NAME", length = 255)
 	private String name;
-	
+	@Column(name = "reflection", length = 10000)
+	private String reflection;
+	@Column(name = "reaction")
+	private String reaction;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID")
 	private Long ID;
+	public String getReaction() {
+		return reaction;
+	}
+
+	public void setReaction(String reaction) {
+		this.reaction = reaction;
+	}
+
+	public String getReflection() {
+		return reflection;
+	}
+
+	public void setReflection(String reflection) {
+		this.reflection = reflection;
+	}
+
 	@ManyToOne
 	@JoinColumn(name = "Users")
 	private User user;

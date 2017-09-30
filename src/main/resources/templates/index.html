@@ -50,9 +50,10 @@
 
 
                 <h3 align="center"> Past Journeys </h3>            
-                    <button th:each="journey : ${journeys}"  class="button button-landing" onclick="btn(this)">
-                                            <span th:text= "${journey.getName()}"/>
-                                            <br/> <span th:text= "${journey.getDate()}"/><br/>
+                    <button th:each="journey : ${journeys}" th:data-name="${journey.getName()}" th:data-date="${journey.getDate()}"
+                     class="button button-landing" onclick="btn(this)" >
+                                            <span th:text= "${journey.getName()}" />
+                                            <br/> <span th:text= "${journey.getDate()}" /><br/>
                                         
                     </button>
                     <!-- Button clicks lead into the modals which include reflections --> 
@@ -72,6 +73,7 @@
         <div class="modal-content">
             <span class="close" id = "closed">&times;</span>
             <p id="info">Temp modal info- idk what to do</p>
+            <h1>HTEOAPHSDGDO;ANS;VLAISHDPOAGHWEIH</h1>
         </div>
 
     </div>
@@ -86,8 +88,9 @@
         var span = document.getElementById("closed");
 
         // When the user clicks on the button, open the modal 
-        var btn = function(param, value){
+        var btn = function(param){
         	modal.style.display = "block";
+        	document.getElementById('info').innerHTML = param.getAttribute("data-name") + param.getAttribute("data-date");
         }
 		
         // When the user clicks on (x), close the modal
