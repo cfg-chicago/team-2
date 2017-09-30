@@ -51,13 +51,13 @@
 
                 <h3 align="center"> Journey Feedback </h3>            
                     <button th:each="journey : ${journeys}" th:data-name="${journey.getName()}" th:data-date="${journey.getDate()}"
-                     class="button button-landing" onclick="btn(this)" >
+                     class="button button-landing" onclick="btn(this)">
                                             <span th:text= "${journey.getName()}" />
                                             <br/> <span th:text= "${journey.getDate()}" /><br/>
-                                             <span th:text= "${journey.getEcstatic()}" />
-                                             <span th:text= "${journey.getHappy()}" /> 
-                                             <span th:text= "${journey.getMeh()}" /> 
-                                             <span th:text= "${journey.getSad()}" /> 
+                                             <span th:text= "${journey.getEcstatic()}" /> XD
+                                             <span th:text= "${journey.getHappy()}" />  :]
+                                             <span th:text= "${journey.getMeh()}" />  :/
+                                             <span th:text= "${journey.getSad()}" />  :[
                                         
                     </button>
                     <!-- Button clicks lead into the modals which include reflections --> 
