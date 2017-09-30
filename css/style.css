@@ -1,5 +1,17 @@
 ﻿ul {
     list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+
 }
+.journey_list li{
+    margin: 0 auto;
+    border: 1px solid #00ff21;
+    fill: #00ff21;
+    text-align: center;
+    width: 160px;
+    
+}
+
 
 
