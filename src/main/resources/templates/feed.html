@@ -27,7 +27,7 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="/">
-                        Embarc Journey Media
+                        <img src="images/embarc-logo.png" alt="Embarc Journeys" />
                     </a>
                 </li>
                 <li>
@@ -37,7 +37,7 @@
                     <a href="/add">Add a Journey!</a>
                 </li>
                 <li>
-                    <a href="/">Logout</a>
+                    <a href="/logout">Logout</a>
                 </li>
             </ul>
         </div>
@@ -53,6 +53,7 @@
                     <button th:each="journey : ${journeys}" th:data-name="${journey.getName()}" th:data-date="${journey.getDate()}"
                      class="button button-landing" onclick="btn(this)">
                                             <span th:text= "${journey.getName()}" />
+                                            <img src="images/${journey.image_url()}" />
                                             <br/> <span th:text= "${journey.getDate()}" /><br/>
                                              <span th:text= "${journey.getEcstatic()}" /> XD
                                              <span th:text= "${journey.getHappy()}" />  :]
