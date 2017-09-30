@@ -44,18 +44,12 @@
             <div class="container-fluid">
                 <h1>Add A Journey</h1>
                 <p>Input a new Journey that students will be experiencing soon!</p>
-                <form action="/addJourney" method="POST">
+                <form action="/add_teach" method="POST">
                     Journey: <input type="text" name="journey_add" />
                     <br />
                     Date: <input type="Date" name="date" />
                     <br />
-                    Reaction: <select name="react">
-                        <option value="happy">:]</option>
-                        <option value="ecstatic">XD</option>
-                        <option value="meh">:\</option>
-                        <option value="sad">:[</option>
-                    </select>
-                    <br />Put your reflection here!
+                    <br />Put your prompts for student reflection here!
                     <textarea name="reflect" rows="5" cols="50"></textarea>
                     <input type="submit" name="Submit" />
                 </form>

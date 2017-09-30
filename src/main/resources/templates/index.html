@@ -50,8 +50,8 @@
 
 
                 <h3 align="center"> Past Journeys </h3>            
-                    <button th:each="journey : ${journeys}" th:data-name="${journey.getName()}" th:data-date="${journey.getDate()}"
-                     class="button button-landing" onclick="btn(this)" >
+                    <button th:each="journey : ${journeys}" th:onclick = "'btn(' + ${journey.getID()} + ')'"
+                     class="button button-landing">
                                             <span th:text= "${journey.getName()}" />
                                             <br/> <span th:text= "${journey.getDate()}" /><br/>
                                         
@@ -86,11 +86,14 @@
         // Get the element that closes the modal
         var span = document.getElementById("closed");
 
-        // When the user clicks on the button, open the modal 
-        var btn = function(param){
-        	modal.style.display = "block";
-        	document.getElementById("info").innerHTML = param.getAttribute("data-name");
-        }
+        // When the use clicks on the button, open the modal 
+        function btn(id) {            
+         $.get("/journey/" + id, function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+            
+        } 
+        )
+        }  
 		
         // When the user clicks on (x), close the modal
         span.onclick = function () {
