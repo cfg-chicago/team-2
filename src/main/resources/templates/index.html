@@ -73,7 +73,6 @@
         <div class="modal-content">
             <span class="close" id = "closed">&times;</span>
             <p id="info">Temp modal info- idk what to do</p>
-            <h1>HTEOAPHSDGDO;ANS;VLAISHDPOAGHWEIH</h1>
         </div>
 
     </div>
@@ -90,7 +89,7 @@
         // When the user clicks on the button, open the modal 
         var btn = function(param){
         	modal.style.display = "block";
-        	document.getElementById('info').innerHTML = param.getAttribute("data-name") + param.getAttribute("data-date");
+        	document.getElementById("info").innerHTML = param.getAttribute("data-name");
         }
 		
         // When the user clicks on (x), close the modal
