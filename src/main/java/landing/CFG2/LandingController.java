@@ -36,8 +36,19 @@ public class LandingController {
 		return "add";
 	}
 	
+	@GetMapping("/login")
+	public String login(Model model) {
+		return "login";
+	}
+	
+	@GetMapping("/feed")
+	public String feed(Model model) {
+		model.addAttribute("journeys", jRepo.findAll());
+		return ("feed");
+	}
+	
 	@PostMapping("/addJourney")
-	public String post(@RequestParam("journey")Long journey,@RequestParam("date")String date, 
+	public String journeyPost(@RequestParam("journey")Long journey,@RequestParam("date")String date, 
 			@RequestParam("reflect")String reflection, 
 			@RequestParam("react")String emoji) throws ParseException {
 		MyJourney m = new MyJourney();
@@ -47,9 +58,19 @@ public class LandingController {
 		m.setJourney(j);
 		m.setReflection(reflection);
 		m.setReaction(emoji);
+		j.incrementReaction(emoji);
 		m.setName(j.getName());
 		m.setUser(u);
 		mRepo.save(m);
+		return "redirect:/";
+	}
+	
+	@PostMapping("/login")
+	public String loginPost(@RequestParam("username")String name, @RequestParam("password")String password) {
+		User user = new User();
+		user.setName(name);
+		user.setPassword(password);
+		uRepo.save(user);
 		return "redirect:/";
 	}
 	
@@ -62,7 +83,7 @@ public class LandingController {
 		j.setName("climbing");
 		
 		Journey j2 = new Journey();
-		j.setName("running");;
+		j.setName("running");
 		
 		
 		MyJourney m = new MyJourney();

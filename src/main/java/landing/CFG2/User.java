@@ -47,6 +47,17 @@ public class User {
 	@Column(name = "Name")
 	private String name;
 	
+	@Column(name = "password")
+	private String password;
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@OneToMany(mappedBy = "user")
 	private List<MyJourney> myJourney;
 }
