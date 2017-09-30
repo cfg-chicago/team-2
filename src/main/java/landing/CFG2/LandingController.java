@@ -58,13 +58,18 @@ public class LandingController {
 	@GetMapping("/logout")
 	public String logout(Model model) {
 		loggedIn = false;
-		return ("logout");
+		return "logout";
 	}
 	
 	@GetMapping("/teacher_land")
 	public String instructor(Model model) {
 		model.addAttribute("journeys", jRepo.findAll());
-		return ("teacher_land");
+		return "teacher_land";
+	}
+	
+	@GetMapping("/add_teach")
+	public String addTeach(Model model) {
+		return "add_teach";
 	}
 	
 	@PostMapping("/addJourney")
@@ -107,6 +112,17 @@ public class LandingController {
 		}
 		if(u.getName().equals("instructor")) return "redirect:/teacher_land";
 		return "redirect:/";
+	}
+	
+	@PostMapping("/add_teach")
+	public String addTeachPost(@RequestParam("journey_add")String name, @RequestParam("date") String date) throws ParseException {
+		Journey journey = new Journey();
+		journey.setName(name);
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		journey.setDate(df.parse(date));
+		jRepo.save(journey);
+		
+		return "redirect:/add_teach";
 	}
 	
 	@PostConstruct
