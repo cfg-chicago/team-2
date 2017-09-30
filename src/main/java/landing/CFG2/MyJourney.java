@@ -7,11 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Journeys")
-public class Journey   {
+@Table(name = "MyJourneys")
+public class MyJourney   {
 
 	@Column(name = "DATE")
 	private Date date;
@@ -22,6 +24,12 @@ public class Journey   {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID")
 	private Long ID;
+	@ManyToOne
+	@JoinColumn(name = "Users")
+	private User user;
+	@JoinColumn(name = "journeys")
+	@ManyToOne
+	private Journey journey;
 
 	public Date getDate() {
 		return date;
@@ -29,6 +37,22 @@ public class Journey   {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Journey getJourney() {
+		return journey;
+	}
+
+	public void setJourney(Journey journey) {
+		this.journey = journey;
 	}
 
 	public String getName() {
@@ -47,20 +71,4 @@ public class Journey   {
 		ID = iD;
 	}
 	
-//	public String toString() {
-//		return name + " | " + month + " " + day + ", " + year;
-//	}
-//	
-//	public int getYear() {
-//		return year;
-//	}
-//	
-//	
-//	public int compareTo(Journey other) {
-//		if (year > other.getYear()) return 1;
-//		else if (year < other.getYear()) return -1;
-//		else if ()
-//		
-//	}
-//	
 }

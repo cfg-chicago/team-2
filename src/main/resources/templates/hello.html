@@ -1,5 +1,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
  hello 
+ 
+   <ul>
+                 <li th:each="journey : ${journeys}"> 
+                    <span th:text= "${journey.getName()}"/>
+                    </li>
+                    </ul>
+                    
  </body>
  </html>
