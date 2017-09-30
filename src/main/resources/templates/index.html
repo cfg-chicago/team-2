@@ -87,13 +87,12 @@
         var span = document.getElementById("closed");
 
         // When the use clicks on the button, open the modal 
-        function btn(id) {            
-         $.get("/journey/" + id, function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
-            
-        } 
-        )
-        }  
+        function btn(id) {
+            $.ajax({url: "/journey/" + id, 
+            function(journey){
+            alert("Data: " + journey.name);
+            }});     
+        }   
 		
         // When the user clicks on (x), close the modal
         span.onclick = function () {
