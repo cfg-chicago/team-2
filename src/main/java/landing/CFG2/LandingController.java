@@ -3,6 +3,8 @@ package landing.CFG2;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -23,10 +25,15 @@ public class LandingController {
 	@Autowired
 	JourneysRepository jRepo;
 	private User u;
+	private static boolean loggedIn = false;
 	
 	@GetMapping("/")
 	public String index(Model model) {
 		model.addAttribute("journeys", mRepo.findByUser(u));
+		if (loggedIn == false) {
+			loggedIn = true;
+			return "login";
+		}
 		return "index";
 	}
 	
@@ -38,6 +45,7 @@ public class LandingController {
 	
 	@GetMapping("/login")
 	public String login(Model model) {
+		loggedIn = true;
 		return "login";
 	}
 	
@@ -49,7 +57,13 @@ public class LandingController {
 	
 	@GetMapping("/logout")
 	public String logout(Model model) {
-		return ("/logout");
+		loggedIn = false;
+		return ("logout");
+	}
+	
+	@GetMapping("/teacher_land")
+	public String instructor(Model model) {
+		return ("teacher_land");
 	}
 	
 	@PostMapping("/addJourney")
@@ -72,16 +86,26 @@ public class LandingController {
 	
 	@PostMapping("/login")
 	public String loginPost(@RequestParam("username")String name, @RequestParam("password")String password) {
-		User user = new User();
-		user.setName(name);
-		user.setPassword(password);
-		uRepo.save(user);
+		List<User> list = uRepo.findAll();
+		int firstLogin = 1;
+		Iterator<User> itr = list.iterator();
+		while (itr.hasNext()) {
+			User next = itr.next();
+			if (next.getName() == name) {
+				u = next;
+				firstLogin = 0;
+				break;
+			}
+		}
+		if (firstLogin == 1) {
+			User user = new User();
+			user.setName(name);
+			user.setPassword(password);
+			uRepo.save(user);
+			u = user;
+		}
+		if(u.getName().equals("instructor")) return "redirect:/teacher_land";
 		return "redirect:/";
-	}
-	
-	@PostMapping("/logout")
-	public String logoutPost() {
-		return "redirect:/login";
 	}
 	
 	@PostConstruct
@@ -93,7 +117,7 @@ public class LandingController {
 		j.setName("climbing");
 		
 		Journey j2 = new Journey();
-		j.setName("running");
+		j2.setName("running");
 		
 		
 		MyJourney m = new MyJourney();
