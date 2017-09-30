@@ -47,6 +47,11 @@ public class LandingController {
 		return ("feed");
 	}
 	
+	@GetMapping("/logout")
+	public String logout(Model model) {
+		return ("/logout");
+	}
+	
 	@PostMapping("/addJourney")
 	public String journeyPost(@RequestParam("journey")Long journey,@RequestParam("date")String date, 
 			@RequestParam("reflect")String reflection, 
@@ -72,6 +77,11 @@ public class LandingController {
 		user.setPassword(password);
 		uRepo.save(user);
 		return "redirect:/";
+	}
+	
+	@PostMapping("/logout")
+	public String logoutPost() {
+		return "redirect:/login";
 	}
 	
 	@PostConstruct
