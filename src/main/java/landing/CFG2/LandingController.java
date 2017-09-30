@@ -63,6 +63,7 @@ public class LandingController {
 	
 	@GetMapping("/teacher_land")
 	public String instructor(Model model) {
+		model.addAttribute("journeys", jRepo.findAll());
 		return ("teacher_land");
 	}
 	
