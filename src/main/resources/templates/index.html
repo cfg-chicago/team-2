@@ -9,8 +9,7 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
 
-    <title>Simple Sidebar - Start Bootstrap Template</title>
-
+    <title>Embarc Journey</title>
 
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 
@@ -51,9 +50,10 @@
 
 
                 <h3 align="center"> Past Journeys </h3>            
-                    <button th:each="journey : ${journeys}"  class="button button-landing">
+                    <button th:each="journey : ${journeys}"  class="button button-landing" onclick="btn(this)">
                                             <span th:text= "${journey.getName()}"/>
-                                            <br/> <span th:text= "${journey.getDate()}"/>
+                                            <br/> <span th:text= "${journey.getDate()}"/><br/>
+                                        
                     </button>
                     <!-- Button clicks lead into the modals which include reflections --> 
                     
@@ -70,8 +70,8 @@
 
         <!-- Modal content -->
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Brooklyn Boulders:</p>
+            <span class="close" id = "closed">&times;</span>
+            <p id="info">Temp modal info- idk what to do</p>
         </div>
 
     </div>
@@ -81,17 +81,16 @@
         var modal = document.getElementById('myModal');
 
         // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
+        // Get the element that closes the modal
+        var span = document.getElementById("closed");
 
         // When the user clicks on the button, open the modal 
-        btn.onclick = function () {
-            modal.style.display = "block";
+        var btn = function(param, value){
+        	modal.style.display = "block";
         }
-
-        // When the user clicks on <span> (x), close the modal
+		
+        // When the user clicks on (x), close the modal
         span.onclick = function () {
             modal.style.display = "none";
         }
