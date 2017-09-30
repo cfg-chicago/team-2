@@ -53,7 +53,9 @@
                     <button th:each="journey : ${journeys}" th:data-name="${journey.getName()}" th:data-date="${journey.getDate()}"
                      class="button button-landing" onclick="btn(this)">
                                             <span th:text= "${journey.getName()}" />
-                                            <img src="images/${journey.image_url()}" />
+                        <div class="pics">
+                                            <img th:src="'images/'+${journey.getImage_url()}"/>
+                        </div>
                                             <br/> <span th:text= "${journey.getDate()}" /><br/>
                                              <span th:text= "${journey.getEcstatic()}" /> XD
                                              <span th:text= "${journey.getHappy()}" />  :]
