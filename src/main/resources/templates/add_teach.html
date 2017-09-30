@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="/">
+                        Embarc Journey Media
+                    </a>
+                </li>
+                <li>
+                    <a href="/feed">My Feed</a>
+                </li>
+                <li>
+                    <a href="/add">Add a Journey!</a>
+                </li>
+                <li>
+                    <a href="/">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <h1>Add A Journey</h1>
+                <p>Input a new Journey that students will be experiencing soon!</p>
+                <form action="/addJourney" method="POST">
+                    Journey: <input type="text" name="journey_add" />
+                    <br />
+                    Date: <input type="Date" name="date" />
+                    <br />
+                    Reaction: <select name="react">
+                        <option value="happy">:]</option>
+                        <option value="ecstatic">XD</option>
+                        <option value="meh">:\</option>
+                        <option value="sad">:[</option>
+                    </select>
+                    <br />Put your reflection here!
+                    <textarea name="reflect" rows="5" cols="50"></textarea>
+                    <input type="submit" name="Submit" />
+                </form>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+
+
+</body>
+</html>
