@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>login</title>
+
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/style.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="/teacher_land">
+                        Embarc Journey Media
+                    </a>
+                </li>
+                <li>
+                    <a href="/teacher_land">Teacher Mode!</a>
+                </li>
+                <li>
+                    <a href="/add_teach">Add a Journey!</a>
+                </li>
+                <li>
+                    <a href="/">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <h1>Thank you Instructor!</h1>
+                <h3>Here, you can see high level information about students' opinions for journeys. Click on one below!</h3>
+
+                <button th:each="journey : ${journeys}" th:data-name="${journey.getName()}" th:data-date="${journey.getDate()}"
+                        class="button button-landing" onclick="btn(this)">
+                    <span th:text="${journey.getName()}" />
+                    <br /> <span th:text="${journey.getDate()}" /><br />
+
+                </button>
+
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close" id="closed">&times;</span>
+                <span id="chartContainer" style="height: 370px; width: 100%;"></span>
+            </div>
+
+        </div>
+
+        <script>
+            var btn = function (param) {
+                modal.style.display = "block";
+            }
+            window.onload = function(){
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    animationEnabled: true,
+                    title: {
+                        text: "Brooklyn Boulders",
+                        horizontalAlign: "left"
+                    },
+                    data: [{
+                        type: "doughnut",
+                        startAngle: 60,
+                        //innerRadius: 60,
+                        indexLabelFontSize: 17,
+                        indexLabel: "{label} - #percent%",
+                        toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+                        dataPoints: [
+                        { y: 45, label: ":]" },
+                        { y: 14, label: "XD" },
+                        { y: 21, label: ":[" },
+                        { y: 30, label: ":/" },
+                        ]
+                    }]
+                });
+                chart.render();
+            }
+
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the button that opens the modal
+
+        // Get the element that closes the modal
+        var span = document.getElementById("closed");
+        var chart = document.getElementById("chartContainer");
+
+        // When the user clicks on the button, open the modal
+        //var btn = function (param) {
+        //    modal.style.display = "block";
+        //    renderChart();
+        //}
+
+        // When the user clicks on (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        </script>
+
+    </div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>
