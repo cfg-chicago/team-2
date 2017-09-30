@@ -5,9 +5,10 @@
 
 }
 .journey_list li{
-    margin: 0 auto;
-    border: 1px solid #00ff21;
-    fill: #00ff21;
+    margin: 5px auto;
+    padding: 5px;
+    border: 1px solid #52C0A7;
+    background-color: #52C0A7;
     text-align: center;
     width: 160px;
     
