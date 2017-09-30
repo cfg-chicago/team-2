@@ -110,6 +110,7 @@ body {
       margin: auto;
       transition-duration: 0.4s;
       vertical-align: middle;
+      
 }
 
 .button-landing {
@@ -122,6 +123,11 @@ body {
     background: none;
     transition: 0.5s;
     color: black;
+}
+
+.pics {
+    width:100%;
+    height:100%;
 }
 
 .h1-landing-title{
