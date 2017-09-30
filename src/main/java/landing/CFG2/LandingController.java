@@ -91,7 +91,7 @@ public class LandingController {
 		Iterator<User> itr = list.iterator();
 		while (itr.hasNext()) {
 			User next = itr.next();
-			if (next.getName() == name) {
+			if (next.getName().equals(name)) {
 				u = next;
 				firstLogin = 0;
 				break;
@@ -109,33 +109,15 @@ public class LandingController {
 	}
 	
 	@PostConstruct
-	public void dummy() {
-		u = new User();
-		u.setName("Jim");
-		
+	public void dummy() {		
 		Journey j = new Journey();
 		j.setName("climbing");
 		
 		Journey j2 = new Journey();
 		j2.setName("running");
-		
-		
-		MyJourney m = new MyJourney();
-		m.setDate(new Date(123434));
-		m.setJourney(j);
-		m.setUser(u);
-		m.setName("climbing2");
-		
-		MyJourney m2 = new MyJourney();
-		m2.setName("running");
-		m2.setDate(new Date(43563456));
-		m2.setUser(u);
 
-		uRepo.save(u);
 		jRepo.save(j);
 		jRepo.save(j2);
-		mRepo.save(m);
-		mRepo.save(m2); 
 	}
 	
 	
